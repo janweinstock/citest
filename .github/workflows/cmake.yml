@@ -18,8 +18,8 @@ jobs:
       id: cache-cross-compiler
       uses: actions/cache@v2
       with:
-        path: DEPENDS/
-        key: abcd3
+        path: /home/runner/work/citest/citest/DEPENDS/
+        key: abcd4
 
     - name: Download cross-compiler
       if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
