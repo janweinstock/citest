@@ -41,6 +41,7 @@ jobs:
       run: |
           echo $PATH
           ls -l
+          echo $PWD
           or1k-elf-gcc --version
         
     - uses: actions/checkout@v2
