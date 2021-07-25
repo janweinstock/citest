@@ -22,7 +22,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /home/runner/work/citest/citest/DEPENDS/
-        key: abcdefg
+        key: abcdefgh
 
     - name: Download cross-compiler
       if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
@@ -33,9 +33,6 @@ jobs:
         release=or1k-elf_gcc5.3.0_binutils2.26_newlib2.4.0_gdb7.11.tgz
         wget --quiet https://github.com/openrisc/newlib/releases/download/v2.4.0/$release
         tar -xzf $release
-        ls
-        echo $(pwd)
-        cd ..
         
     - name: Setup cross-compiler
       run: |
