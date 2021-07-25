@@ -14,7 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Cache cross-compiler
+      id: cache-cross-compiler
+      uses: actions/cache@v2
+      with:
+        path: DEPENDS
+        key: ${{runner.os}}-cross-compiler
+
     - name: Download cross-compiler
+      if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
       run: |
         mkdir DEPENDS
         cd DEPENDS
