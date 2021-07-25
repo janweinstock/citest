@@ -25,14 +25,14 @@ jobs:
         echo $(pwd)
         cd ..
         
-    - name: Check cross-compiler
+    - name: Setup cross-compiler
       run: |
         echo "$(pwd)/DEPENDS/or1k-elf/bin" >> $GITHUB_PATH
-        echo $PATH
-        or1k-elf-gcc --version
         
     - name: Check cross-compiler (again)
-      run: or1k-elf-gcc --version
+      run: |
+          echo $PATH
+          or1k-elf-gcc --version
         
     - uses: actions/checkout@v2
 
