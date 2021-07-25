@@ -27,7 +27,7 @@ jobs:
         
     - name: Check cross-compiler
       run: |
-        export PATH=$PATH:$(pwd)/DEPENDS/or1k-elf/bin
+        echo "$(pwd)/DEPENDS/or1k-elf/bin" >> $GITHUB_PATH
         echo $PATH
         or1k-elf-gcc --version
         
