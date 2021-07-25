@@ -34,6 +34,7 @@ jobs:
     - name: Check cross-compiler
       run: |
         export PATH=$PATH:$(pwd)/DEPENDS/or1k-elf/bin
+        echo $PATH
         or1k-elf-gcc --version
         
     - name: Check cross-compiler (again)
