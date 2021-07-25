@@ -21,7 +21,7 @@ jobs:
         path: DEPENDS
         key: cross-compiler-${{runner.os}}
 
-    - name: Download 
+    - name: Download cross-compiler
       if: steps.cross-compiler.outputs.cache-hit != 'true'
       run: |
         mkdir DEPENDS
@@ -29,9 +29,15 @@ jobs:
         release=or1k-elf_gcc5.3.0_binutils2.26_newlib2.4.0_gdb7.11.tgz
         wget https://github.com/openrisc/newlib/releases/download/v2.4.0/$release
         tar -xzf $release
-        export PATH=$PATH:`pwd`/or1k-elf/bin
         cd ..
+        
+    - name: Check cross-compiler
+      run: |
+        export PATH=$PATH:$(pwd)/DEPENDS/or1k-elf/bin
         or1k-elf-gcc --version
+        
+    - name: Check cross-compiler (again)
+      run: or1k-elf-gcc --version
         
     - uses: actions/checkout@v2
 
