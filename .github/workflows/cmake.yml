@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: DEPENDS
-        key: ${{runner.os}}-cross-compiler
+        key: abcd
 
     - name: Download cross-compiler
       if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
