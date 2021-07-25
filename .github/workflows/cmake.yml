@@ -18,7 +18,7 @@ jobs:
       id: cache-cross-compiler
       uses: actions/cache@v2
       with:
-        path: DEPENDS
+        path: DEPENDS/
         key: abcd3
 
     - name: Download cross-compiler
