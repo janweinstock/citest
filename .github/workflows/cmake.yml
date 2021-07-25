@@ -14,21 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup cross-compiler
-      id: cross-compiler
-      uses: actions/cache@v2
-      with:
-        path: DEPENDS
-        key: cross-compiler-${{runner.os}}
-
     - name: Download cross-compiler
-      if: steps.cross-compiler.outputs.cache-hit != 'true'
       run: |
         mkdir DEPENDS
         cd DEPENDS
         release=or1k-elf_gcc5.3.0_binutils2.26_newlib2.4.0_gdb7.11.tgz
         wget https://github.com/openrisc/newlib/releases/download/v2.4.0/$release
         tar -xzf $release
+        ls
+        echo $(pwd)
         cd ..
         
     - name: Check cross-compiler
