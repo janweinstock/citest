@@ -19,15 +19,16 @@ jobs:
       uses: actions/cache@v2
       with:
         path: DEPENDS
-        key: abcd
+        key: abcd3
 
     - name: Download cross-compiler
       if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
       run: |
+        echo $(pwd)
         mkdir DEPENDS
         cd DEPENDS
         release=or1k-elf_gcc5.3.0_binutils2.26_newlib2.4.0_gdb7.11.tgz
-        wget https://github.com/openrisc/newlib/releases/download/v2.4.0/$release
+        wget --quiet https://github.com/openrisc/newlib/releases/download/v2.4.0/$release
         tar -xzf $release
         ls
         echo $(pwd)
