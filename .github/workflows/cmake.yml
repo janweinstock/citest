@@ -14,12 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
     - name: Cache cross-compiler
       id: cache-cross-compiler
       uses: actions/cache@v2
       with:
         path: /home/runner/work/citest/citest/DEPENDS/
-        key: abcd4
+        key: abcdefg
 
     - name: Download cross-compiler
       if: steps.cache-cross-compiler.outputs.cache-hit != 'true'
@@ -45,8 +48,6 @@ jobs:
           echo $PWD
           or1k-elf-gcc --version
         
-    - uses: actions/checkout@v2
-
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
