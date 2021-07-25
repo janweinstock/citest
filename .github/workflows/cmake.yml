@@ -40,6 +40,7 @@ jobs:
     - name: Check cross-compiler (again)
       run: |
           echo $PATH
+          ls -l
           or1k-elf-gcc --version
         
     - uses: actions/checkout@v2
