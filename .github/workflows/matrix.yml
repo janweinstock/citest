@@ -17,6 +17,8 @@ jobs:
       matrix:
         version: [1.2a, 2.0, 3.1, 4.4]
         
+    name: Build - Version ${{matrix.version}}
+        
     env:
       VERSION: v${{matrix.version}}
 
