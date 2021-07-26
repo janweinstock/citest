@@ -23,6 +23,9 @@ jobs:
       VERSION: v${{matrix.version}}
 
     steps:
+    - name: Setup
+      run: sudo apt-get libelf-dev libsdl2-dev
+
     - name: Checkout
       uses: actions/checkout@v2
       
