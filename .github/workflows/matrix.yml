@@ -1,0 +1,28 @@
+name: Matrix
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        version: [1.2a, 2.0, 3.1, 4.4]
+        
+    env:
+      VERSION=v${{matrix.version}}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Echo
+      run: echo ${{env.VERSION}}
