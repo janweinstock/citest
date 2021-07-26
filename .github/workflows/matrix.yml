@@ -33,4 +33,4 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Echo ${{matrix.version}}
-      run: echo ${{env.VERSION}}
+      run: echo ${{env.VERSION}} $(nproc)
