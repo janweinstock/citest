@@ -26,5 +26,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Echo
+    - name: Echo ${{matrix.version}}
       run: echo ${{env.VERSION}}
