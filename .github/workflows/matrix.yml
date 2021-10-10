@@ -15,12 +15,13 @@ jobs:
     
     strategy:
       matrix:
-        version: [1.2a, 2.0]
+        name: [ASAN,USAN,TSAN]
+        sanitize: [address,undefined,thread]
         
-    name: Build - Version ${{matrix.version}}
+    name: ${{matrix.name}}
         
     env:
-      VERSION: v${{matrix.version}}
+      CXX_FLAGS=-fsanitize=${{matrix.sanitize}}
 
     steps:
     - name: Setup
@@ -33,4 +34,4 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Echo ${{matrix.version}}
-      run: echo ${{env.VERSION}} $(nproc)
+      run: echo $CXX_FLAGS
