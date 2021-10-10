@@ -17,7 +17,7 @@ jobs:
       matrix:
         sanitize: [address,undefined,thread]
         
-    name: sanitize ${{matrix.sanitize}}
+    name: ${{matrix.sanitize}} sanitizer
         
     steps:
     - name: Checkout
