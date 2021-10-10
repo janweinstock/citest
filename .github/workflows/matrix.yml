@@ -20,9 +20,6 @@ jobs:
         
     name: ${{matrix.name}}
         
-    env:
-      CXX_FLAGS=-fsanitize=${{matrix.sanitize}}
-
     steps:
     - name: Setup
       run: |
@@ -33,5 +30,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Echo ${{matrix.version}}
+    - name: Build
+      env: CXX_FLAGS=-fsanitize=${{matrix.sanitize}}
       run: echo $CXX_FLAGS
